@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
   services = [
     {
       title: 'Одностраничный сайт (Лендинг)',
@@ -49,25 +49,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-  }
-
-  ngAfterViewInit() {
-    this.observeElements();
-  }
-
-  observeElements() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    const elements = document.querySelectorAll('.fade-in');
-    elements.forEach(el => observer.observe(el));
   }
 }

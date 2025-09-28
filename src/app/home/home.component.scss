@@ -1,24 +1,29 @@
-// Fade-in animation
-@keyframes fadeInUp {
-  from {
+// Simple opacity fade-in animations
+@keyframes fadeIn {
+  0% {
     opacity: 0;
-    transform: translateY(30px);
   }
-  to {
+  50% {
+    opacity: 0.3;
+  }
+  100% {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
 .fade-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  animation: fadeIn 1.2s ease-out forwards;
 }
 
-.fade-in.animate {
-  opacity: 1;
-  transform: translateY(0);
+.fade-in-left {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.fade-in-right {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
 }
 
 .hero {
