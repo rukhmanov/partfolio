@@ -1,0 +1,100 @@
+<div class="about-hero">
+    <div class="container">
+        <div class="hero-content">
+            <a routerLink="/" class="back-link">← На главную</a>
+            <h1>О себе</h1>
+            <p class="hero-description">Меня зовут Алексей Рухманов, я frontend-разработчик с опытом создания
+                современных веб-приложений и мобильных решений.</p>
+        </div>
+    </div>
+</div>
+
+<div class="about-content">
+    <div class="container">
+        <div class="content-grid">
+            <div class="main-content">
+                <section class="about-section">
+                    <h2>Моя история</h2>
+                    <p>Начал изучать веб-разработку в 2021 году, увлекшись возможностями создания интерактивных
+                        пользовательских интерфейсов. С тех пор постоянно совершенствую свои навыки и изучаю новые
+                        технологии.</p>
+                    <p>Специализируюсь на создании современных, быстрых и удобных веб-приложений с использованием
+                        Angular, TypeScript и Ionic. Мой подход к разработке основан на понимании бизнес-задач клиента и
+                        создании решений, которые действительно работают.</p>
+                </section>
+
+                <section class="about-section">
+                    <h2>Опыт работы</h2>
+                    <div class="experience-timeline">
+                        <div class="timeline-item" *ngFor="let exp of experience">
+                            <div class="timeline-period">{{ exp.period }}</div>
+                            <div class="timeline-content">
+                                <h3>{{ exp.position }}</h3>
+                                <div class="company">{{ exp.company }}</div>
+                                <p>{{ exp.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about-section">
+                    <h2>Образование</h2>
+                    <div class="education-list">
+                        <div class="education-item" *ngFor="let edu of education">
+                            <div class="education-year">{{ edu.year }}</div>
+                            <div class="education-content">
+                                <h3>{{ edu.degree }}</h3>
+                                <div class="institution">{{ edu.institution }}</div>
+                                <p>{{ edu.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3>Навыки</h3>
+                    <div class="skills-list">
+                        <div class="skill-item" *ngFor="let skill of skills">
+                            <div class="skill-header">
+                                <span class="skill-name">{{ skill.name }}</span>
+                                <span class="skill-category">{{ skill.category }}</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" [style.width.%]="skill.level"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Языки</h3>
+                    <div class="languages-list">
+                        <div class="language-item">
+                            <span class="flag">🇷🇺</span>
+                            <span>Русский - родной</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="flag">🇬🇧</span>
+                            <span>Английский - средний</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="flag">🇩🇪</span>
+                            <span>Немецкий - средний</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3>Связаться</h3>
+                    <p>Готов обсудить ваш проект!</p>
+                    <div class="contact-buttons">
+                        <a href="mailto:aleksei.rukhmanov@gmail.com" class="btn btn-primary">Написать</a>
+                        <a href="https://t.me/AleksRukhman" class="btn btn-secondary">Telegram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

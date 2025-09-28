@@ -1,0 +1,239 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Wanderlust</h1>
+        <p class="hero-subtitle">Путешествия вашей мечты начинаются здесь</p>
+        <p class="hero-description">Откройте для себя мир с нашими эксклюзивными турами. Мы создаем незабываемые
+            путешествия, которые останутся в памяти навсегда</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" (click)="scrollToTours()">Посмотреть туры</button>
+            <button class="btn btn-secondary" (click)="scrollToRequest()">Подобрать тур</button>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop" alt="Путешествия">
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>О нашем агентстве</h2>
+                <p>Wanderlust - это команда профессионалов, которая уже 10 лет помогает людям воплощать мечты о
+                    путешествиях в реальность.</p>
+                <p>Мы работаем напрямую с отелями, авиакомпаниями и местными гидами, что позволяет нам предлагать лучшие
+                    цены и качество обслуживания.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Довольных клиентов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">63</div>
+                        <div class="stat-label">Страны мира</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Лет опыта</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=500&h=400&fit=crop"
+                    alt="Путешествия">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services">
+    <div class="container">
+        <h2>Наши услуги</h2>
+        <div class="services-grid">
+            <div class="service-item" *ngFor="let service of services">
+                <div class="service-icon">{{ service.icon }}</div>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Tours Section -->
+<section class="tours" id="tours">
+    <div class="container">
+        <h2>Популярные туры</h2>
+        <div class="tours-grid">
+            <div class="tour-card" *ngFor="let tour of popularTours">
+                <div class="tour-image">
+                    <img [src]="tour.image" [alt]="tour.destination">
+                    <div class="tour-price">{{ tour.price }}₽</div>
+                </div>
+                <div class="tour-content">
+                    <h3>{{ tour.destination }}</h3>
+                    <p class="tour-duration">{{ tour.duration }}</p>
+                    <p class="tour-description">{{ tour.description }}</p>
+                    <div class="tour-features">
+                        <span class="feature" *ngFor="let feature of tour.features">{{ feature }}</span>
+                    </div>
+                    <button class="btn btn-primary">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Destinations Section -->
+<section class="destinations">
+    <div class="container">
+        <h2>Направления</h2>
+        <div class="destinations-grid">
+            <div class="destination-item" *ngFor="let destination of destinations">
+                <h3>{{ destination.name }}</h3>
+                <p>{{ destination.count }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tour Request Section -->
+<section class="tour-request" id="request">
+    <div class="container">
+        <h2>Подобрать индивидуальный тур</h2>
+        <p>Расскажите нам о ваших предпочтениях, и мы создадим идеальное путешествие специально для вас</p>
+        <form (ngSubmit)="onSubmitTourRequest()" class="request-form">
+            <div class="form-row">
+                <input type="text" placeholder="Ваше имя" [(ngModel)]="tourRequestData.name" name="name" required>
+                <input type="tel" placeholder="Телефон" [(ngModel)]="tourRequestData.phone" name="phone" required>
+                <input type="email" placeholder="Email" [(ngModel)]="tourRequestData.email" name="email" required>
+            </div>
+            <div class="form-row">
+                <select [(ngModel)]="tourRequestData.destination" name="destination" required>
+                    <option value="">Выберите направление</option>
+                    <option value="Европа">Европа</option>
+                    <option value="Азия">Азия</option>
+                    <option value="Африка">Африка</option>
+                    <option value="Америка">Америка</option>
+                    <option value="Океания">Океания</option>
+                </select>
+                <select [(ngModel)]="tourRequestData.duration" name="duration" required>
+                    <option value="">Продолжительность</option>
+                    <option value="3-5 дней">3-5 дней</option>
+                    <option value="6-10 дней">6-10 дней</option>
+                    <option value="11-15 дней">11-15 дней</option>
+                    <option value="16+ дней">16+ дней</option>
+                </select>
+                <select [(ngModel)]="tourRequestData.budget" name="budget" required>
+                    <option value="">Бюджет</option>
+                    <option value="до 50000">до 50 000₽</option>
+                    <option value="50000-100000">50 000 - 100 000₽</option>
+                    <option value="100000-200000">100 000 - 200 000₽</option>
+                    <option value="200000+">200 000₽+</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <select [(ngModel)]="tourRequestData.travelers" name="travelers" required>
+                    <option value="">Количество путешественников</option>
+                    <option value="1">1 человек</option>
+                    <option value="2">2 человека</option>
+                    <option value="3-4">3-4 человека</option>
+                    <option value="5-6">5-6 человек</option>
+                    <option value="7+">7+ человек</option>
+                </select>
+            </div>
+            <textarea placeholder="Особые пожелания (необязательно)" [(ngModel)]="tourRequestData.message"
+                name="message"></textarea>
+            <button type="submit" class="btn btn-primary">Подобрать тур</button>
+        </form>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Отзывы наших путешественников</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Невероятное путешествие в Таиланд! Все было организовано на высшем уровне. Обязательно обратимся
+                    снова."</p>
+                <div class="author">- Мария и Дмитрий</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Спасибо за незабываемую поездку в Италию! Гид был просто потрясающий, отели - выше всяких похвал."
+                </p>
+                <div class="author">- Анна Петрова</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Лучшее турагентство! Помогли подобрать идеальный тур для нашей семьи. Дети в восторге!"</p>
+                <div class="author">- Семья Козловых</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Контакты</h2>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>ул. Путешествий, 10</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span>+7 (999) 123-45-67</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🕐</span>
+                    <span>Пн-Вс: 9:00 - 21:00</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span>info&#64;wanderlust.ru</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">💬</span>
+                    <span>&#64;wanderlust_travel</span>
+                </div>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.0!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Wanderlust</h3>
+                <p>Путешествия вашей мечты</p>
+            </div>
+            <div class="footer-section">
+                <h4>Направления</h4>
+                <p>Европа</p>
+                <p>Азия</p>
+                <p>Африка</p>
+                <p>Америка</p>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <p>+7 (999) 123-45-67</p>
+                <p>info&#64;wanderlust.ru</p>
+                <p>ул. Путешествий, 10</p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,192 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Coffee Corner</h1>
+        <p class="hero-subtitle">Лучший кофе в городе</p>
+        <p class="hero-description">Насладитесь ароматом свежеобжаренного кофе в уютной атмосфере. Мы готовим каждый
+            напиток с любовью и вниманием к деталям</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" (click)="scrollToMenu()">Посмотреть меню</button>
+            <button class="btn btn-secondary" (click)="scrollToOrder()">Заказать доставку</button>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600&h=400&fit=crop"
+            alt="Кофейня Coffee Corner">
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>О нашей кофейне</h2>
+                <p>Coffee Corner - это место, где встречаются страсть к кофе и любовь к качеству. Мы работаем с 2018
+                    года и за это время стали любимым местом для тысяч кофеманов.</p>
+                <p>Наш бариста обжаривает зерна каждую неделю, чтобы вы всегда получали самый свежий и ароматный кофе.
+                </p>
+                <div class="features">
+                    <div class="feature" *ngFor="let feature of features">
+                        <span class="icon">{{ feature.icon }}</span>
+                        <div class="feature-text">
+                            <h4>{{ feature.title }}</h4>
+                            <p>{{ feature.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&h=400&fit=crop"
+                    alt="Интерьер кофейни">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Special Offers Section -->
+<section class="offers">
+    <div class="container">
+        <h2>Специальные предложения</h2>
+        <div class="offers-grid">
+            <div class="offer-card" *ngFor="let offer of specialOffers">
+                <h3>{{ offer.title }}</h3>
+                <p class="description">{{ offer.description }}</p>
+                <div class="price">{{ offer.price }}</div>
+                <div class="time">{{ offer.time }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section class="menu" id="menu">
+    <div class="container">
+        <h2>Наше меню</h2>
+        <div class="menu-categories">
+            <div class="category" *ngFor="let category of menuCategories">
+                <h3>{{ category.name }}</h3>
+                <div class="menu-items">
+                    <div class="menu-item" *ngFor="let item of category.items">
+                        <div class="item-info">
+                            <h4>{{ item.name }}</h4>
+                            <p>{{ item.description }}</p>
+                        </div>
+                        <div class="item-price">{{ item.price }}₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Order Section -->
+<section class="order" id="order">
+    <div class="container">
+        <h2>Заказать доставку</h2>
+        <p>Доставляем свежий кофе и вкусные десерты прямо к вам домой или в офис</p>
+        <form (ngSubmit)="onSubmitOrder()" class="order-form">
+            <div class="form-row">
+                <input type="text" placeholder="Ваше имя" [(ngModel)]="orderData.name" name="name" required>
+                <input type="tel" placeholder="Телефон" [(ngModel)]="orderData.phone" name="phone" required>
+            </div>
+            <div class="form-row">
+                <input type="text" placeholder="Адрес доставки" [(ngModel)]="orderData.address" name="address" required>
+            </div>
+            <textarea placeholder="Что хотите заказать? (например: 2 капучино, 1 тирамису)"
+                [(ngModel)]="orderData.items" name="items" required></textarea>
+            <textarea placeholder="Особые пожелания (необязательно)" [(ngModel)]="orderData.message"
+                name="message"></textarea>
+            <button type="submit" class="btn btn-primary">Заказать</button>
+        </form>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Отзывы наших гостей</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Лучший кофе в городе! Атмосфера просто потрясающая, идеальное место для работы."</p>
+                <div class="author">- Анна Петрова</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Тирамису здесь просто божественный! А капучино с идеальной пенкой."</p>
+                <div class="author">- Дмитрий Козлов</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Заказываю доставку каждое утро. Быстро, вкусно и всегда свежий кофе!"</p>
+                <div class="author">- Елена Сидорова</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Контакты</h2>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>ул. Кофейная, 25</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span>+7 (999) 123-45-67</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🕐</span>
+                    <span>Пн-Вс: 7:00 - 23:00</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span>info&#64;coffeecorner.ru</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">💬</span>
+                    <span>&#64;coffee_corner</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🚚</span>
+                    <span>Доставка: 30-45 мин</span>
+                </div>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.0!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Coffee Corner</h3>
+                <p>Лучший кофе в городе</p>
+            </div>
+            <div class="footer-section">
+                <h4>Меню</h4>
+                <p>Кофе</p>
+                <p>Десерты</p>
+                <p>Напитки</p>
+                <p>Завтраки</p>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <p>+7 (999) 123-45-67</p>
+                <p>info&#64;coffeecorner.ru</p>
+                <p>ул. Кофейная, 25</p>
+            </div>
+        </div>
+    </div>
+</footer>

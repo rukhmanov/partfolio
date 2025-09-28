@@ -1,0 +1,68 @@
+<div class="services-hero">
+    <div class="container">
+        <div class="hero-content">
+            <a routerLink="/" class="back-link">← На главную</a>
+            <h1>Мои услуги</h1>
+            <p class="hero-description">Предоставляю полный спектр услуг по разработке веб-сайтов, мобильных приложений
+                и корпоративных решений</p>
+        </div>
+    </div>
+</div>
+
+<div class="services-content">
+    <div class="container">
+        <section class="services-grid">
+            <h2>Что я могу для вас сделать</h2>
+            <div class="services-list">
+                <div class="service-card" *ngFor="let service of services">
+                    <div class="service-header">
+                        <div class="service-icon">{{ service.icon }}</div>
+                        <h3>{{ service.title }}</h3>
+                    </div>
+
+                    <p class="service-description">{{ service.description }}</p>
+
+                    <div class="service-features">
+                        <h4>Что входит:</h4>
+                        <ul>
+                            <li *ngFor="let feature of service.features">{{ feature }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-info">
+                            <span class="price">{{ service.price }}</span>
+                            <span class="duration">{{ service.duration }}</span>
+                        </div>
+                        <a href="mailto:aleksei.rukhmanov@gmail.com?subject=Запрос по услуге: {{ service.title }}"
+                            class="btn btn-primary">Обсудить проект</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <h2>Как я работаю</h2>
+            <div class="process-steps">
+                <div class="process-step" *ngFor="let step of processSteps">
+                    <div class="step-number">{{ step.step }}</div>
+                    <div class="step-content">
+                        <h3>{{ step.title }}</h3>
+                        <p>{{ step.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-card">
+                <h2>Готовы начать проект?</h2>
+                <p>Свяжитесь со мной для обсуждения ваших задач и получения персонального предложения</p>
+                <div class="cta-buttons">
+                    <a href="mailto:aleksei.rukhmanov@gmail.com" class="btn btn-primary">Написать на email</a>
+                    <a href="https://t.me/AleksRukhman" class="btn btn-secondary">Telegram</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,200 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Bella Vista</h1>
+        <p class="hero-subtitle">Аутентичная итальянская кухня в сердце города</p>
+        <p class="hero-description">Погрузитесь в атмосферу настоящей Италии с нашими блюдами, приготовленными по
+            традиционным рецептам</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" (click)="scrollToReservation()">Забронировать столик</button>
+            <button class="btn btn-secondary" (click)="scrollToMenu()">Посмотреть меню</button>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop"
+            alt="Ресторан Bella Vista">
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>О нашем ресторане</h2>
+                <p>Bella Vista - это место, где встречаются традиции итальянской кухни и современный комфорт. Наш
+                    шеф-повар Марио привез рецепты из родной Тосканы и создал меню, которое покорит даже самых
+                    взыскательных гурманов.</p>
+                <p>Мы используем только свежие продукты, импортируемые напрямую из Италии, чтобы каждое блюдо было
+                    настоящим произведением искусства.</p>
+                <div class="features">
+                    <div class="feature">
+                        <span class="icon">🍝</span>
+                        <span>Домашняя паста</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🍕</span>
+                        <span>Пицца в дровяной печи</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🍷</span>
+                        <span>Итальянские вина</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=400&fit=crop"
+                    alt="Интерьер ресторана">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Special Offers Section -->
+<section class="offers">
+    <div class="container">
+        <h2>Специальные предложения</h2>
+        <div class="offers-grid">
+            <div class="offer-card" *ngFor="let offer of specialOffers">
+                <h3>{{ offer.title }}</h3>
+                <p class="description">{{ offer.description }}</p>
+                <div class="price">{{ offer.price }}₽</div>
+                <div class="time">{{ offer.time }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section class="menu" id="menu">
+    <div class="container">
+        <h2>Наше меню</h2>
+        <div class="menu-categories">
+            <div class="category" *ngFor="let category of menuCategories">
+                <h3>{{ category.name }}</h3>
+                <div class="menu-items">
+                    <div class="menu-item" *ngFor="let item of category.items">
+                        <div class="item-info">
+                            <h4>{{ item.name }}</h4>
+                            <p>{{ item.description }}</p>
+                        </div>
+                        <div class="item-price">{{ item.price }}₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reservation Section -->
+<section class="reservation" id="reservation">
+    <div class="container">
+        <h2>Забронировать столик</h2>
+        <p>Забронируйте столик заранее и насладитесь незабываемым ужином</p>
+        <form (ngSubmit)="onSubmitReservation()" class="reservation-form">
+            <div class="form-row">
+                <input type="text" placeholder="Ваше имя" [(ngModel)]="reservationData.name" name="name" required>
+                <input type="tel" placeholder="Телефон" [(ngModel)]="reservationData.phone" name="phone" required>
+            </div>
+            <div class="form-row">
+                <input type="date" [(ngModel)]="reservationData.date" name="date" required>
+                <input type="time" [(ngModel)]="reservationData.time" name="time" required>
+                <select [(ngModel)]="reservationData.guests" name="guests" required>
+                    <option value="">Количество гостей</option>
+                    <option value="1">1 человек</option>
+                    <option value="2">2 человека</option>
+                    <option value="3">3 человека</option>
+                    <option value="4">4 человека</option>
+                    <option value="5">5 человек</option>
+                    <option value="6">6 человек</option>
+                    <option value="7">7 человек</option>
+                    <option value="8">8 человек</option>
+                </select>
+            </div>
+            <textarea placeholder="Особые пожелания (необязательно)" [(ngModel)]="reservationData.message"
+                name="message"></textarea>
+            <button type="submit" class="btn btn-primary">Забронировать</button>
+        </form>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Отзывы наших гостей</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Лучшая итальянская кухня в городе! Паста просто божественная, а атмосфера невероятная."</p>
+                <div class="author">- Анна Петрова</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Отличное место для романтического ужина. Обслуживание на высшем уровне!"</p>
+                <div class="author">- Дмитрий Козлов</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Пицца в дровяной печи - это что-то невероятное! Обязательно вернемся снова."</p>
+                <div class="author">- Елена Сидорова</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Контакты</h2>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>ул. Итальянская, 25</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span>+7 (999) 123-45-67</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🕐</span>
+                    <span>Пн-Вс: 12:00 - 24:00</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span>info&#64;bellavista.ru</span>
+                </div>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.0!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Bella Vista</h3>
+                <p>Аутентичная итальянская кухня</p>
+            </div>
+            <div class="footer-section">
+                <h4>Меню</h4>
+                <p>Антипасти</p>
+                <p>Паста</p>
+                <p>Пицца</p>
+                <p>Мясо и рыба</p>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <p>+7 (999) 123-45-67</p>
+                <p>info&#64;bellavista.ru</p>
+                <p>ул. Итальянская, 25</p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,221 @@
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Glamour</h1>
+        <p class="hero-subtitle">Салон красоты премиум-класса</p>
+        <p class="hero-description">Подарите себе незабываемые моменты красоты и ухода. Наши мастера создадут идеальный
+            образ, подчеркивающий вашу индивидуальность</p>
+        <div class="hero-buttons">
+            <button class="btn btn-primary" (click)="scrollToAppointment()">Записаться на процедуру</button>
+            <button class="btn btn-secondary" (click)="scrollToServices()">Посмотреть услуги</button>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop"
+            alt="Салон красоты Glamour">
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>О нашем салоне</h2>
+                <p>Glamour - это место, где рождается красота. Мы работаем с 2015 года и за это время помогли тысячам
+                    женщин обрести уверенность в себе.</p>
+                <p>Наши мастера регулярно повышают квалификацию, изучают новые техники и используют только
+                    профессиональную косметику премиум-класса.</p>
+                <div class="features">
+                    <div class="feature">
+                        <span class="icon">✨</span>
+                        <span>Профессиональная косметика</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">👩‍🎨</span>
+                        <span>Опытные мастера</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🏆</span>
+                        <span>Премиум-сервис</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&h=400&fit=crop"
+                    alt="Интерьер салона">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Special Offers Section -->
+<section class="offers">
+    <div class="container">
+        <h2>Специальные предложения</h2>
+        <div class="offers-grid">
+            <div class="offer-card" *ngFor="let offer of specialOffers">
+                <h3>{{ offer.title }}</h3>
+                <p class="description">{{ offer.description }}</p>
+                <div class="price">{{ offer.price }}</div>
+                <div class="condition">{{ offer.condition }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <h2>Наши услуги</h2>
+        <div class="services-categories">
+            <div class="category" *ngFor="let category of services">
+                <h3>{{ category.category }}</h3>
+                <div class="services-grid">
+                    <div class="service-item" *ngFor="let service of category.items">
+                        <div class="service-info">
+                            <h4>{{ service.name }}</h4>
+                            <div class="service-details">
+                                <span class="duration">{{ service.duration }}</span>
+                            </div>
+                        </div>
+                        <div class="service-price">{{ service.price }}₽</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Masters Section -->
+<section class="masters">
+    <div class="container">
+        <h2>Наши мастера</h2>
+        <div class="masters-grid">
+            <div class="master-card" *ngFor="let master of masters">
+                <img [src]="master.image" [alt]="master.name">
+                <h3>{{ master.name }}</h3>
+                <p class="specialization">{{ master.specialization }}</p>
+                <p class="experience">Опыт: {{ master.experience }}</p>
+                <div class="master-services">
+                    <span class="service-tag" *ngFor="let service of master.services">{{ service }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Appointment Section -->
+<section class="appointment" id="appointment">
+    <div class="container">
+        <h2>Записаться на процедуру</h2>
+        <p>Выберите удобное время и наши мастера создадут для вас идеальный образ</p>
+        <form (ngSubmit)="onSubmitAppointment()" class="appointment-form">
+            <div class="form-row">
+                <input type="text" placeholder="Ваше имя" [(ngModel)]="appointmentData.name" name="name" required>
+                <input type="tel" placeholder="Телефон" [(ngModel)]="appointmentData.phone" name="phone" required>
+            </div>
+            <div class="form-row">
+                <select [(ngModel)]="appointmentData.service" name="service" required>
+                    <option value="">Выберите услугу</option>
+                    <option value="Женская стрижка">Женская стрижка</option>
+                    <option value="Мужская стрижка">Мужская стрижка</option>
+                    <option value="Окрашивание">Окрашивание</option>
+                    <option value="Мелирование">Мелирование</option>
+                    <option value="Макияж">Макияж</option>
+                    <option value="Укладка">Укладка</option>
+                </select>
+                <input type="date" [(ngModel)]="appointmentData.date" name="date" required>
+                <input type="time" [(ngModel)]="appointmentData.time" name="time" required>
+            </div>
+            <textarea placeholder="Особые пожелания (необязательно)" [(ngModel)]="appointmentData.message"
+                name="message"></textarea>
+            <button type="submit" class="btn btn-primary">Записаться</button>
+        </form>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Отзывы наших клиентов</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Анна - потрясающий мастер! Сделала именно то, что я хотела. Теперь я постоянный клиент салона."</p>
+                <div class="author">- Ольга М.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Очень довольна результатом окрашивания. Цвет получился именно таким, как я мечтала!"</p>
+                <div class="author">- Елена К.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Свадебный макияж был просто идеальным! Все гости спрашивали, кто делал макияж."</p>
+                <div class="author">- Анна С.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Контакты</h2>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span>ул. Красоты, 15</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span>+7 (999) 123-45-67</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🕐</span>
+                    <span>Пн-Вс: 9:00 - 21:00</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span>info&#64;glamour.ru</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">💬</span>
+                    <span>&#64;glamour_salon</span>
+                </div>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.0!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDQ1JzIwLjkiTiAzN8KwMzcnMDIuMyJF!5e0!3m2!1sru!2sru!4v1234567890"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Glamour</h3>
+                <p>Салон красоты премиум-класса</p>
+            </div>
+            <div class="footer-section">
+                <h4>Услуги</h4>
+                <p>Стрижки и укладки</p>
+                <p>Окрашивание</p>
+                <p>Уход за волосами</p>
+                <p>Макияж</p>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <p>+7 (999) 123-45-67</p>
+                <p>info&#64;glamour.ru</p>
+                <p>ул. Красоты, 15</p>
+            </div>
+        </div>
+    </div>
+</footer>

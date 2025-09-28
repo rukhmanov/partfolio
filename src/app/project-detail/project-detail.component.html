@@ -1,0 +1,81 @@
+<div class="project-detail" *ngIf="project">
+    <div class="project-hero">
+        <div class="container">
+            <div class="hero-content">
+                <a routerLink="/projects" class="back-link">← К списку проектов</a>
+                <h1>{{ project.title }}</h1>
+                <p class="hero-description">{{ project.fullDescription }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-main-image">
+        <img [src]="project.image" [alt]="project.title">
+    </div>
+
+    <div class="project-content">
+        <div class="container">
+            <div class="content-grid">
+                <div class="main-content">
+                    <section class="project-section">
+                        <h2>О проекте</h2>
+                        <p>{{ project.fullDescription }}</p>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Вызовы и решения</h2>
+                        <div class="challenge-solution">
+                            <div class="challenge">
+                                <h3>Вызов</h3>
+                                <p>{{ project.challenges }}</p>
+                            </div>
+                            <div class="solution">
+                                <h3>Решение</h3>
+                                <p>{{ project.solution }}</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Результаты</h2>
+                        <p>{{ project.results }}</p>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Галерея</h2>
+                        <div class="gallery">
+                            <div class="gallery-item" *ngFor="let image of project.images">
+                                <img [src]="image" [alt]="project.title">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="sidebar">
+                    <div class="sidebar-card">
+                        <h3>Технологии</h3>
+                        <div class="tech-list">
+                            <span class="tech-item" *ngFor="let tech of project.technologies">{{ tech }}</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Функции</h3>
+                        <ul class="features-list">
+                            <li *ngFor="let feature of project.features">{{ feature }}</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3>Посмотреть лендинг</h3>
+                        <p>Хотите увидеть реальный лендинг в действии?</p>
+                        <div class="contact-buttons">
+                            <a [routerLink]="['/landing', project.id]" class="btn btn-primary">Открыть лендинг</a>
+                            <a href="mailto:aleksei.rukhmanov@gmail.com" class="btn btn-secondary">Обсудить проект</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
