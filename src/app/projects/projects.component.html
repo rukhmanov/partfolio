@@ -1,14 +1,16 @@
 <div class="projects-header">
     <div class="container">
-        <h1>Мои работы</h1>
-        <p>Примеры проектов, которые я создал для решения различных бизнес-задач</p>
-        <a routerLink="/" class="btn btn-secondary">← Вернуться на главную</a>
+        <h1 class="fade-in">Мои работы</h1>
+        <p class="fade-in" style="animation-delay: 0.2s;">Примеры проектов, которые я создал для решения различных
+            бизнес-задач</p>
+        <a routerLink="/" class="btn btn-secondary fade-in" style="animation-delay: 0.4s;">← Вернуться на главную</a>
     </div>
 </div>
 
 <div class="projects-grid">
     <div class="container">
-        <div class="project-card" *ngFor="let project of projects">
+        <div class="project-card fade-in" *ngFor="let project of projects; let i = index"
+            [style.animation-delay]="(i * 0.2) + 's'">
             <div class="project-image">
                 <img [src]="project.image" [alt]="project.title">
                 <div class="project-overlay">

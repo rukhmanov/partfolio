@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit, AfterViewInit {
   projects = [
     {
       id: 'fitness-club',
@@ -52,4 +52,28 @@ export class ProjectsComponent {
       features: ['Меню кофейни', 'Заказ доставки', 'Информация о кофе', 'Атмосфера заведения', 'Акции и скидки']
     }
   ];
+
+  ngOnInit() {
+    window.scrollTo(0, 0);
+  }
+
+  ngAfterViewInit() {
+    this.observeElements();
+  }
+
+  observeElements() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    const elements = document.querySelectorAll('.fade-in');
+    elements.forEach(el => observer.observe(el));
+  }
 }
