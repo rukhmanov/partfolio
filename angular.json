@@ -48,7 +48,8 @@
                   "maximumError": "15kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/partfolio/"
             },
             "development": {
               "optimization": false,
